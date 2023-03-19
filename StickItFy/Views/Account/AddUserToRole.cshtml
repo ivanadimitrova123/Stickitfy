@@ -1,0 +1,30 @@
+﻿@model StickItFy.Models.AddToRoleModel
+@{
+    ViewBag.Title = "AddUserToRole";
+}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<div class="container mb-5 pb-5 mt-5 pt-5">
+    <div class="container fs-3">
+        <h2>Add the user to role</h2>
+
+        @using (Html.BeginForm("AddUserToRole", "Account"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(z => z.Email);
+                @Html.TextBoxFor(z => z.Email, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(z => z.SelectedRole, new SelectList(Model.Roles), new { @class = "form-control" })
+            </div>
+
+            <button type="submit" class="btn btn-default">Save</button>
+        }
+    </div>
+</div>
+
+
+

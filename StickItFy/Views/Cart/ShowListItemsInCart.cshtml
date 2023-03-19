@@ -1,0 +1,52 @@
+﻿@model StickItFy.Models.Cart
+
+@{
+    ViewBag.Title = "ShowListItemsInCart";
+}
+
+<div class="container my-5 py-5">
+
+    <table class="table">
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Stickers.ElementAt(0).ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stickers.ElementAt(0).Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stickers.ElementAt(0).NameOfProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stickers.ElementAt(0).Price)
+            </th>
+            <th></th>
+        </tr>
+        @{ var sum = 0; }
+        @foreach (var item in Model.Stickers)
+        {
+            <tr>
+                <td>
+                    <img src="@item.ImageUrl" style="height:130px; width:170px;"
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameOfProduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove from cart", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+            sum = sum + item.Price;
+        }
+
+    </table>
+    <h2 class="mt-5">Вкупно за плаќање: @sum денари.</h2>
+</div>
+
